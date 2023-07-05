@@ -57,8 +57,8 @@ class InsiderDataFrame:
         tmp_df = tmp_df.drop(columns=["Ticker"])
         tmp_df["ClosePrice"] = tmp_df_tickers[ticker]
         tmp_df["OffsetPrice"] = tmp_df_tickers[ticker+"_OffsetPrice"]
-        tmp_df.loc[tmp_df["ClosePrice"]>tmp_df["OffsetPrice"], "Trend"] = 1
-        tmp_df.loc[tmp_df["ClosePrice"]<tmp_df["OffsetPrice"], "Trend"] = 0
+        tmp_df.loc[tmp_df["ClosePrice"]>tmp_df["OffsetPrice"], "Trend"] = 0
+        tmp_df.loc[tmp_df["ClosePrice"]<tmp_df["OffsetPrice"], "Trend"] = 1
         tmp_df = tmp_df.drop(columns=["OffsetPrice"])
         return tmp_df
 
