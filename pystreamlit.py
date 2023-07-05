@@ -23,7 +23,7 @@ class InsiderDataFrame:
                  index_col=date_column)
         self.df.index = self.df.index.date
         self._clean_insider_dataframe()
-        self.df.info()
+        #self.df.info()
     
     def _clean_insider_dataframe(self):
         self.df = self.df.drop(columns=["X", "Trade Date", "Insider Name", "Title","Trade Type"]) # do we need trade type?
@@ -47,8 +47,10 @@ class InsiderDataFrame:
         self.df_tickers.index = self.df_tickers.index.date
     
     def get_processed_df(self,ticker):
-        self._set_insider_dataframe()
-        self._set_tickers()
+        if self.df is None:
+            self._set_insider_dataframe()
+        if self.df_tickers is None:
+            self._set_tickers()
         tmp_df_tickers = self.df_tickers
         tmp_df = self.df.where(self.df["Ticker"] == ticker)
         tmp_df = tmp_df.dropna(subset=["Ticker"])
@@ -58,18 +60,10 @@ class InsiderDataFrame:
         tmp_df.loc[tmp_df["ClosePrice"]>tmp_df["OffsetPrice"], "Trend"] = 0
         tmp_df.loc[tmp_df["ClosePrice"]<tmp_df["OffsetPrice"], "Trend"] = 1
         tmp_df = tmp_df.drop(columns=["OffsetPrice"])
-        return tmp_df
-
-        
-
-
-
-
-        
-
-
-insider = InsiderDataFrame("./insider_data_v2.csv")
-print(insider.get_processed_df("MSFT").head(13))
+        tmp_df = tmp_df.sort_index(ascending=True)
+        return tmp_df     
+#insider = InsiderDataFrame("./insider_data_v2.csv")
+#print(insider.get_processed_df("MSFT").head(13))
 
 
 
