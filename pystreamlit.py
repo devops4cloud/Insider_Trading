@@ -1,11 +1,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-#import pandas.hvplot
 from pathlib import Path
 import yfinance as yf
 
-#df['Qty'].hvplot()
 
 #st.line_chart(df['Qty'])
 
