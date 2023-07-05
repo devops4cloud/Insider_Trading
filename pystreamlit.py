@@ -38,10 +38,6 @@ class InsiderDataFrame:
             self.df[col] = self.df[col].astype(str).str.replace(',', '', regex=False)
             self.df[col] = pd.to_numeric(self.df[col])
 
-        
-        
-
-
     def _set_tickers(self):
         self.df_tickers = pd.DataFrame()
         for ticker in self.tickers:
