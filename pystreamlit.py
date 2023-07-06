@@ -1,7 +1,7 @@
-import streamlit as st
+#import streamlit as st
 import pandas as pd
 import numpy as np
-import hvplot.pandas
+#import hvplot.pandas
 from pathlib import Path
 import yfinance as yf
 
@@ -11,13 +11,19 @@ import yfinance as yf
 
 class InsiderDataFrame:
 
-    def __init__(self, file_path) -> None:
-        self.source = Path(file_path)
+    def __init__(self, file_path, dataframe=None) -> None:
+        if file_path:
+            self.source = Path(file_path)
         self.tickers = ["MSFT", "GOOG", "AMZN", "BIDU", "ADBE", "IBM", "MU", "NVDA", "PLTR", "AI", "TSLA"]
         self.fromdate = "2019-06-21"
         self.todate = "2023-06-30"
-        self.df = None
         self.df_tickers = None
+        if dataframe is None:
+            self.df = None
+        else:
+            self.df = dataframe
+            self._clean_insider_dataframe()
+            self.df.index = self.df.index.date
 
     def _set_insider_dataframe(self,date_column="Filing Date"):
         self.df = pd.read_csv(self.source,parse_dates=True,
@@ -64,9 +70,14 @@ class InsiderDataFrame:
         tmp_df = tmp_df.drop(columns=["OffsetPrice"])
         tmp_df = tmp_df.sort_index(ascending=True)
         return tmp_df     
-#insider = InsiderDataFrame("./insider_data_v2.csv")
-#print(insider.get_processed_df("MSFT").head(13))
 
+"""
+data = pd.read_csv(Path("./insider_data_v2.csv"),parse_dates=True,
+                 infer_datetime_format=True,
+                 index_col="Filing Date")
+insider = InsiderDataFrame(None,data)
+print(insider.get_processed_df("MSFT").head(13))
+"""
 
 
 
