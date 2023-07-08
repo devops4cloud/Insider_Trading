@@ -40,29 +40,176 @@ The user of the application will have to download Python,Python package manager 
 ## Machine Learning Models Used
 
   ## Logistic Regression
- - Label Trend (0 - Stock price decreased, 1- Stock price increased)
   
- - Data Encoding / Splitting
-* Tran, Test, Split
-* Standard Scaler
+  **TSLA**                                             
+ -  Label Trend (0 - Stock price decreased)      
+ -  The recall score 
+ -  F1 Score 
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 
+ -  F1 Score 
+ -  Model Accuracy
+   
+**AMZN**
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score 
+ -  F1 Score 
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 
+ -  F1 Score 
+ -  Model Accuracy 
+
+**MSFT**
+
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score 
+ -  F1 Score 
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 
+ -  F1 Score 
+ -  Model Accuracy 
+
+**GOOG**
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score
+ -  F1 Score 
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score
+ -  F1 Score 
+ -  Model Accuracy 
 
 ## Support Vector Machine (SVM)
- - Trend (0 - Stock price decreased, 1- Stock price increased)
- -  Data Encoding / Splitting
-* Time-sliced data (30 months of Training)
-* Standard Scaler
+
+**TSLA**                                             
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score 0.00
+ -  F1 Score  0.00
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 1.00
+ -  F1 Score .74
+ -  Model Accuracy .58
+
+**AMZN**
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score .56
+ -  F1 Score .63
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score .71  
+ -  F1 Score ..63
+ -  Model Accuracy .62
+
+**MSFT**
+
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score 1.00
+ -  F1 Score .80
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 0.00
+ -  F1 Score 0.00
+ -  Model Accuracy .67
+
+**GOOG**
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score .67
+ -  F1 Score .63
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score .43
+ -  F1 Score .46
+ -  Model Accuracy .56
+
 
 ## Long short-term memory (LSTM)
-- Label Trend (0 - Stock price decreased, 1- Stock price increased)
- * Data Encoding / Splitting
- * Tran, Test, Split
- * Standard Scaler
+  **TSLA**                                             
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score 
+ -  F1 Score 
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 
+ -  F1 Score 
+ -  Model Accuracy 
+
+**AMZN**
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score 
+ -  F1 Score 
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 
+ -  F1 Score 
+ -  Model Accuracy 
+
+**MSFT**
+
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score 
+ -  F1 Score 
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 
+ -  F1 Score 
+ -  Model Accuracy 
+
+**GOOG**
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score 
+ -  F1 Score 
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 
+ -  F1 Score 
+ -  Model Accuracy 
 
 ## eXtreme Gradient Boosting (XGBoost)
-- Label Trend (0 - Stock price decreased, 1- Stock price increased)
-- Data Encoding / Splitting
-* Tran, Test, Split
-* Standard Scaler
+  **TSLA**                                             
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score 
+ -  F1 Score 
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 
+ -  F1 Score 
+ -  Model Accuracy 
+
+**AMZN**
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score 
+ -  F1 Score 
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 
+ -  F1 Score 
+ -  Model Accuracy 
+
+**MSFT**
+
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score 
+ -  F1 Score 
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 
+ -  F1 Score 
+ -  Model Accuracy 
+
+**GOOG**
+ - Label Trend (0 - Stock price decreased)      
+ -  The recall score 
+ -  F1 Score 
+   
+ - Label Trend (1 - Stock price increased)
+ -  The recall score 
+ -  F1 Score
+ -  Model Accuracy 
+
   
 ## Analysis Report
 
