@@ -1,5 +1,4 @@
-# Insider_Trading
-Team project for insider trading
+# Insider_Trading_Analysis -  Team 2 
 <img src="./IMGS/insider.jpg">
 
 ---
