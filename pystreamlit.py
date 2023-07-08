@@ -118,20 +118,23 @@ class ModelProcessing:
     def load_ml_model(self,ml_model,stock):
         
         (filename,extension)= self._get_file_name(ml_model,stock)
+        scaler_model = self._get_scaler_model(ml_model,stock)
 
         if extension == "sav": # SVM and Logistics Regression - sklearn
             readmode = 'rb'
             with open(f"./models/{filename}.{extension}",readmode) as file:
                 loaded_model = pckl.load(file)
-                return loaded_model
+                return (loaded_model, scaler_model)
         elif extension== "h5": # LSTM - Keras
             loaded_model = keras.models.load_model(f"./models/{filename}.{extension}")
             loaded_model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-            return loaded_model
+            return (loaded_model, scaler_model)
         elif extension=="json":
-            loaded_model = xgb.XGBClassifier()
-            xgb.load_model(f"./models/{filename}.{extension}")
-            return loaded_model
+            loaded_model =xgb.XGBClassifier() #https://github.com/dmlc/xgboost/issues/706
+            booster = xgb.Booster()
+            booster.load_model(f"./models/{filename}.{extension}")
+            loaded_model._Booster = booster
+            return (loaded_model, scaler_model)
     
     def _get_file_name(self,ml_model,stock):
         if ml_model == "Logistics Regression":
@@ -142,6 +145,14 @@ class ModelProcessing:
             return (f"{stock}_SVM_model","sav")
         elif ml_model == "XGBoost":
             return (f"{stock}_xgboost_model","json")
+    
+    def _get_scaler_model(self,ml_model,stock):
+        if ml_model == "Logistics Regression":
+            return (f"{stock}_logistics_model.scaler")
+        elif ml_model == "SVM":
+            return (f"{stock}_SVM_model.scaler")
+        else:
+            return None
 
 """
 # load weights into new model
