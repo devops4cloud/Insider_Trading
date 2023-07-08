@@ -4,9 +4,16 @@ Team project for insider trading
 
 ---
 The Insider application checks the effect of insider trades on the top 10 AI companies closing price after 1 week of the filing date and compares the trend by using machine learning models.
-It downloads 3 years of market daily closing from Yahoo Finance and the insider trade with SEC (Form 4) for the top 10 AI companies 
+It downloads 3 years of market daily closing from Yahoo Finance and the insider trade with SEC (Form 4) for the top 10 AI companies.
+
+**Insider Trades during the last 3 years for MSFT and stock closing price**
+
+<img src="./IMGS/MSFT%20insider%20trades%20by%20price.png">
+
+**Insider Trading - Price Impact After 1 week  - MSFT**
 
 <img src="./IMGS/MSFT%20insider%20trading%20.png">
+
 
 ## Data inputs and cleaning 
 Sources
