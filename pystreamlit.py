@@ -4,6 +4,10 @@ import numpy as np
 #import hvplot.pandas
 from pathlib import Path
 import yfinance as yf
+import pickle as pckl
+from tensorflow import keras
+import xgboost as xgb
+from sklearn.metrics import classification_report
 
 class InsiderDataFrame:
 
@@ -70,9 +74,10 @@ class InsiderDataFrame:
 class ReportApp:
     def __init__(self):
         self.stocks = ['MSFT', 'TSLA', 'GOOG', 'AMZN']
-        self.ml_algorithms = ['Linear Regression', 'Random Forest', 'SVM', 'KNN']
+        self.ml_algorithms = ['Logistics Regression', 'LSTM', 'SVM', 'XGBoost']
         self.file_path = 'insider_data_v2.csv'
         self.insider_dataframe = InsiderDataFrame(self.file_path)
+        st.header('Insider Trader Trend Prediction')
 
 
     def load_data(self, stock):
@@ -84,30 +89,68 @@ class ReportApp:
         st.sidebar.title('Stock Selection')
         stock = st.sidebar.selectbox('Select a stock:', self.stocks)
 
-        st.title(f'Stock Data for {stock}')
+        st.title(f'Insider Data for {stock}')
         df = self.load_data(stock)
         st.dataframe(df)
 
         st.sidebar.title('Machine Learning Algorithm Selection')
         algorithm = st.sidebar.selectbox('Select an algorithm:', self.ml_algorithms)
-        st.write(f'Selected Algorithm: {algorithm}')
+        #st.write(f'Selected Algorithm: {algorithm}')
+        model_loader = ModelProcessing()
+        model = model_loader.load_ml_model(algorithm,stock)
+        sample_number = st.sidebar.slider("Select a number of samples: ",1,len(df))
+        tmp_df = df.sample(sample_number)
+        self._run_results(tmp_df,model)
+
+    def _run_results(self,tmp_df,model):
+        y = tmp_df["Trend"]
+        X = tmp_df.drop(columns=["Trend"])
+        predictions = model.predict(X)
+        st.text(classification_report(y,predictions))
 
 
-class DataProcessing:
+
+class ModelProcessing:
 
     def __init__(self) -> None:
         pass
+
+    def load_ml_model(self,ml_model,stock):
+        
+        (filename,extension)= self._get_file_name(ml_model,stock)
+
+        if extension == "sav": # SVM and Logistics Regression - sklearn
+            readmode = 'rb'
+            with open(f"./models/{filename}.{extension}",readmode) as file:
+                loaded_model = pckl.load(file)
+                return loaded_model
+        elif extension== "h5": # LSTM - Keras
+            loaded_model = keras.models.load_model(f"./models/{filename}.{extension}")
+            loaded_model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+            return loaded_model
+        elif extension=="json":
+            loaded_model = xgb.XGBClassifier()
+            xgb.load_model(f"./models/{filename}.{extension}")
+            return loaded_model
     
-
-
-
+    def _get_file_name(self,ml_model,stock):
+        if ml_model == "Logistics Regression":
+            return (f"{stock}_logistics_model","sav")
+        elif ml_model == "LSTM":
+            return (f"{stock}_LSTM_model","h5")
+        elif ml_model == "SVM":
+            return (f"{stock}_SVM_model","sav")
+        elif ml_model == "XGBoost":
+            return (f"{stock}_xgboost_model","json")
 
 """
-data = pd.read_csv(Path("./insider_data_v2.csv"),parse_dates=True,
-                 infer_datetime_format=True,
-                 index_col="Filing Date")
-insider = InsiderDataFrame(None,data)
-print(insider.get_processed_df("MSFT").head(13))
+# load weights into new model
+loaded_model.load_weights("model.h5")
+print("Loaded model from disk")
+ 
+# evaluate loaded model on test data
+loaded_model.compile(loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+score = loaded_model.evaluate(X, Y, verbose=0)
 """
 
 
