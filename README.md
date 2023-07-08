@@ -45,8 +45,7 @@ The user of the application will have to download Python,Python package manager 
    - [How to install Python](https://www.python.org/downloads/) 
    - [How to install PIP ](https://pip.pypa.io/en/stable/installation/) 
    - [How to install Git ](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-
-     Streamlit : pip install streamlit
+   - Streamlit : pip install streamlit
 
 ## Machine Learning Models Used
 
