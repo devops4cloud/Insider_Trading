@@ -1,10 +1,6 @@
 #import streamlit as st
 import pandas as pd
 import numpy as np
-<<<<<<< HEAD
-=======
-#import hvplot.pandas
->>>>>>> 7ac53ac769a0b25be6da3427095fba8684597183
 from pathlib import Path
 import yfinance as yf
 
