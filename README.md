@@ -75,6 +75,9 @@ The user of the application will have to download Python,Python package manager 
 
 ### eXtreme Gradient Boosting (XGBoost)
 
+**Streamlit was used to present the machine learning models**
+
+<img src=".//IMGS/ML%20Streamlit.png">
 
 ## Analysis Report
 
