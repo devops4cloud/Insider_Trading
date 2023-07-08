@@ -29,7 +29,40 @@ Multiple technologies and statistical models are used to build the insider Appli
 - Matplotlib
 - Github
 
+  ## Installation Guide
 
+The user of the application will have to download Python,Python package manager PIP and Git.
+
+   - [How to install Python](https://www.python.org/downloads/) 
+   - [How to install PIP ](https://pip.pypa.io/en/stable/installation/) 
+   - [How to install Git ](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
+
+## Machine Learning Models Used
+
+  ## Logistic Regression
+ - Label Trend (0 - Stock price decreased, 1- Stock price increased)
+  
+ - Data Encoding / Splitting
+* Tran, Test, Split
+* Standard Scaler
+
+## Support Vector Machine (SVM)
+ - Trend (0 - Stock price decreased, 1- Stock price increased)
+ -  Data Encoding / Splitting
+* Time-sliced data (30 months of Training)
+* Standard Scaler
+
+## Long short-term memory (LSTM)
+- Label Trend (0 - Stock price decreased, 1- Stock price increased)
+ * Data Encoding / Splitting
+ * Tran, Test, Split
+ * Standard Scaler
+
+## eXtreme Gradient Boosting (XGBoost)
+- Label Trend (0 - Stock price decreased, 1- Stock price increased)
+- Data Encoding / Splitting
+* Tran, Test, Split
+* Standard Scaler
 
 
 ## Contributors
