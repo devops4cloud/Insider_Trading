@@ -1,4 +1,4 @@
-# Insider_Trading_Analysis -  Team 2 
+# Insider Trading Analysis -  Team 2 
 <img src="./IMGS/insider.jpg">
 
 ---
