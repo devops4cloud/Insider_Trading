@@ -1,5 +1,5 @@
 # Insider Trading Analysis -  Team 2 
-<img src="./IMGS/insider.jpg" width="1200" height="400">
+<img src="./IMGS/insider.jpg" width="1200" height="300">
 
 ---
 The Insider application checks the effect of insider trades on the top 10 AI companies closing price after 1 week of the filing date and compares the trend by using machine learning models.
