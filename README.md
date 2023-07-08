@@ -38,7 +38,7 @@ Multiple technologies and statistical models are used to build the insider Appli
 - Matplotlib
 - Github
 
-  ## Installation Guide
+## Installation Guide
 
 The user of the application will have to download Python,Python package manager PIP and Git.
 
@@ -59,19 +59,18 @@ The user of the application will have to download Python,Python package manager 
 
 ## Machine Learning Models Outputs
 ### Logistic Regression
-<img src="./IMGS/LR%20model%20over%20sampling%20.png">
-
+<img src="./IMGS/LR%20model%20over%20sampling%20.png" width="600" height="200">
 
 
 ### Support Vector Machine (SVM)
 
 
-<img src="./IMGS/SVM%20model.png">
+<img src="./IMGS/SVM%20model.png" width="600" height="200">
 
 ### Long short-term memory (LSTM)
 
 
-<img src="./IMGS/LSTM%20model.png">
+<img src="./IMGS/LSTM%20model.png" width="600" height="200">
 
 
 ### eXtreme Gradient Boosting (XGBoost)
