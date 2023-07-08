@@ -63,7 +63,16 @@ The user of the application will have to download Python,Python package manager 
 - Data Encoding / Splitting
 * Tran, Test, Split
 * Standard Scaler
+  
+## Analysis Report
 
+* The purpose of the analysis is to examine how corporate insider trades change the trading environment.
+* The individuals who engage in insider trading are typically corporate insiders, such as company executives and board members
+* Corporate Insiders can only trade their Corporation's Securities during certain windows of time when there is no material non-public information that might affect a buyer or seller's trading decision.
+* Insiders are generally contrarian investors and will sometimes purchase their own company’s stock following recent stock underperformance that they may feel is unjustified. 
+* We found that Insider trades affect the closing price within 1 week after the filing date.
+* comparing the 3 models the XGboost has outperformed the other evaluated models.
+* Our findings reinforced the important role of insider trades in providing fundamental information and aiding price discovery
 
 ## Contributors
 
