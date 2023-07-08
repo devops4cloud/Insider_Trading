@@ -62,23 +62,25 @@ The user of the application will have to download Python,Python package manager 
   
    - eXtreme Gradient Boosting (XGBoost)
 
-## Logistic Regression
+
+## Machine Learning Models Outputs
+### Logistic Regression
 <img src="./IMGS/LR%20model%20over%20sampling%20.png">
 
 
 
-## Support Vector Machine (SVM)
+### Support Vector Machine (SVM)
 
 
 <img src="./IMGS/SVM%20model.png">
 
-## Long short-term memory (LSTM)
+### Long short-term memory (LSTM)
 
 
 <img src="./IMGS/LSTM%20model.png">
 
 
-## eXtreme Gradient Boosting (XGBoost)
+### eXtreme Gradient Boosting (XGBoost)
 
 
 ## Analysis Report
