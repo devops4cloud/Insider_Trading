@@ -8,16 +8,16 @@ It downloads 3 years of market daily closing from Yahoo Finance and the insider 
 
 **Insider Trades and the value for the last 3 years for MSFT**
 
-<img src="./IMGS/msft_insider_trades.png" width="600" height="200">
+<img src="./IMGS/msft_insider_trades.png" width="600" height="300">
 
 
 **Insider Trades during the last 3 years for MSFT and stock closing price**
 
-<img src="./IMGS/MSFT%20insider%20trades%20by%20price.png" width="600" height="200">
+<img src="./IMGS/MSFT%20insider%20trades%20by%20price.png" width="600" height="300">
 
 **Insider Trading - Price Impact After 1 week  - MSFT**
 
-<img src="./IMGS/MSFT%20insider%20trading%20.png" width="600" height="200">
+<img src="./IMGS/MSFT%20insider%20trading%20.png" width="600" height="300">
 
 
 ## Data inputs and cleaning 
@@ -44,7 +44,9 @@ The user of the application will have to download Python,Python package manager 
 
    - [How to install Python](https://www.python.org/downloads/) 
    - [How to install PIP ](https://pip.pypa.io/en/stable/installation/) 
-   - [How to install Git ](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
+   - [How to install Git ](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+     Streamlit : pip install streamlit
 
 ## Machine Learning Models Used
 
@@ -59,25 +61,25 @@ The user of the application will have to download Python,Python package manager 
 
 ## Machine Learning Models Outputs
 ### Logistic Regression
-<img src="./IMGS/LR%20model%20over%20sampling%20.png" width="600" height="400">
+<img src="./IMGS/LR%20model%20over%20sampling%20.png" width="800" height="400">
 
 
 ### Support Vector Machine (SVM)
 
 
-<img src="./IMGS/smv_model_output.png" width="600" height="400">
+<img src="./IMGS/smv_model_output.png" width="800" height="400">
 
 ### Long short-term memory (LSTM)
 
 
-<img src="./IMGS/LSTM%20model.png" width="600" height="400">
+<img src="./IMGS/LSTM%20model.png" width="800" height="400">
 
 
 ### eXtreme Gradient Boosting (XGBoost)
 
 **Streamlit was used to present the machine learning models**
 
-<img src=".//IMGS/ML%20Streamlit.png">
+<img src=".//IMGS/ML%20Streamlit.png" width="1200" height="400">
 
 ## Analysis Report
 
