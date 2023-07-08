@@ -1,13 +1,9 @@
-#import streamlit as st
+import streamlit as st
 import pandas as pd
 import numpy as np
 #import hvplot.pandas
 from pathlib import Path
 import yfinance as yf
-
-#df['Qty'].hvplot()
-
-#st.line_chart(df['Qty'])
 
 class InsiderDataFrame:
 
@@ -69,7 +65,42 @@ class InsiderDataFrame:
         tmp_df.loc[tmp_df["ClosePrice"]<tmp_df["OffsetPrice"], "Trend"] = 1
         tmp_df = tmp_df.drop(columns=["OffsetPrice"])
         tmp_df = tmp_df.sort_index(ascending=True)
-        return tmp_df     
+        return tmp_df
+
+class ReportApp:
+    def __init__(self):
+        self.stocks = ['MSFT', 'TSLA', 'GOOG', 'AMZN']
+        self.ml_algorithms = ['Linear Regression', 'Random Forest', 'SVM', 'KNN']
+        self.file_path = 'insider_data_v2.csv'
+        self.insider_dataframe = InsiderDataFrame(self.file_path)
+
+
+    def load_data(self, stock):
+        # Load data for the selected stock
+        df= self.insider_dataframe.get_processed_df(stock)
+        return df
+
+    def run(self):
+        st.sidebar.title('Stock Selection')
+        stock = st.sidebar.selectbox('Select a stock:', self.stocks)
+
+        st.title(f'Stock Data for {stock}')
+        df = self.load_data(stock)
+        st.dataframe(df)
+
+        st.sidebar.title('Machine Learning Algorithm Selection')
+        algorithm = st.sidebar.selectbox('Select an algorithm:', self.ml_algorithms)
+        st.write(f'Selected Algorithm: {algorithm}')
+
+
+class DataProcessing:
+
+    def __init__(self) -> None:
+        pass
+    
+
+
+
 
 """
 data = pd.read_csv(Path("./insider_data_v2.csv"),parse_dates=True,
