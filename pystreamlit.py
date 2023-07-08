@@ -18,6 +18,7 @@ class InsiderDataFrame:
             self.source = Path(file_path)
         # Define a list of tickers to be used in the class
         self.tickers = ["MSFT", "GOOG", "AMZN","TSLA"]
+        # Define the date range for the data to be used in the class
         self.fromdate = "2019-06-21"
         self.todate = "2023-06-30"
         self.df_tickers = None
@@ -25,9 +26,11 @@ class InsiderDataFrame:
             self.df = None
         else:
             self.df = dataframe
+             # Clean the insider dataframe if a dataframe is provided during initialization
             self._clean_insider_dataframe()
             self.df.index = self.df.index.date
 
+    # Method to set the insider dataframe using a CSV file from the provided file path
     def _set_insider_dataframe(self,date_column="Filing Date"):
         self.df = pd.read_csv(self.source,parse_dates=True,
                  infer_datetime_format=True,
@@ -36,6 +39,7 @@ class InsiderDataFrame:
         self._clean_insider_dataframe()
         #self.df.info()
     
+     # Method to clean the insider dataframe by dropping unnecessary columns and converting data types of certain columns
     def _clean_insider_dataframe(self):
         self.df = self.df.drop(columns=["X", "Trade Date", "Insider Name", "Title","Trade Type"]) # do we need trade type?
         cols_to_convert = ['Price', 'Qty', 'Owned', 'ΔOwn', 'Value']
@@ -47,42 +51,59 @@ class InsiderDataFrame:
             self.df[col] = self.df[col].astype(str).str.replace(',', '', regex=False)
             self.df[col] = pd.to_numeric(self.df[col])
 
+     # Method to set the tickers data by retrieving historical data from Yahoo Finance for each ticker in the list of tickers defined in the class
     def _set_tickers(self):
         self.df_tickers = pd.DataFrame()
         for ticker in self.tickers:
             data = yf.Ticker(ticker).history(period='5y')
             close_prices = data['Close']
+            # Add offset price column for each ticker by shifting the close price column by 7 days
             self.df_tickers[ticker+"_OffsetPrice"] = data['Close'].shift(7)
+             # Add close price column for each ticker
             self.df_tickers[ticker] = close_prices
+        # Set index name and convert index to date type
         self.df_tickers.index.name = 'Date'
         self.df_tickers.index = self.df_tickers.index.date
     
+    # Method to get a processed dataframe for a specific ticker 
+    # by merging insider data and tickers data and adding a trend column based 
+    # on close and offset prices comparison 
     def get_processed_df(self,ticker):
         if self.df is None:
+        # Set insider dataframe if it is not already set 
             self._set_insider_dataframe()
         if self.df_tickers is None:
+        # Set tickers data if it is not already set 
             self._set_tickers()
         tmp_df_tickers = self.df_tickers
+        # Select rows from an specific ticker
         tmp_df = self.df.where(self.df["Ticker"] == ticker)
         tmp_df = tmp_df.dropna(subset=["Ticker"])
         tmp_df = tmp_df.drop(columns=["Ticker"])
+
+        # Add close price and offset price columns from tickers data to insider data for the specified ticker 
         tmp_df["ClosePrice"] = tmp_df_tickers[ticker]
         tmp_df["OffsetPrice"] = tmp_df_tickers[ticker+"_OffsetPrice"]
+        # Add trend column based on comparison of close and offset prices (weekly)
         tmp_df.loc[tmp_df["ClosePrice"]>tmp_df["OffsetPrice"], "Trend"] = 0
         tmp_df.loc[tmp_df["ClosePrice"]<tmp_df["OffsetPrice"], "Trend"] = 1
         tmp_df = tmp_df.drop(columns=["OffsetPrice"])
         tmp_df = tmp_df.sort_index(ascending=True)
         return tmp_df
 
+# Define a class for creating a Streamlit report app 
 class ReportApp:
     def __init__(self):
+        # Define a list of stocks and machine learning algorithms to be used in the app 
         self.stocks = ['MSFT', 'TSLA', 'GOOG', 'AMZN']
         self.ml_algorithms = ['Logistics Regression', 'LSTM', 'SVM', 'XGBoost']
+         # Define the file path for the insider data CSV file 
         self.file_path = 'insider_data_v2.csv'
+        # Create an instance of the InsiderDataFrame class using the provided file path 
         self.insider_dataframe = InsiderDataFrame(self.file_path)
         st.header('Insider Trader Trend Prediction')
 
-
+     # Method to load data for a selected stock using the InsiderDataFrame instance 
     def load_data(self, stock):
         # Load data for the selected stock
         df= self.insider_dataframe.get_processed_df(stock)
@@ -92,11 +113,13 @@ class ReportApp:
         st.sidebar.title('Stock Selection')
         stock = st.sidebar.selectbox('Select a stock:', self.stocks)
 
+        # Add a title and dataframe display for the selected stock insider data 
         st.title(f'Insider Data for {stock}')
         df = self.load_data(stock)
         df = df.dropna()
         st.dataframe(df)
 
+         # Add a title and selection box for machine learning algorithm selection in the sidebar 
         st.sidebar.title('Machine Learning Algorithm Selection')
         algorithm = st.sidebar.selectbox('Select an algorithm:', self.ml_algorithms)
         #st.write(f'Selected Algorithm: {algorithm}')

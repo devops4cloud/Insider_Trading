@@ -88,7 +88,8 @@ pip install streamlit
 * To the run the app, do the following:
 
 ```bash
-
+$ git clone https://github.com/devops4cloud/Insider_Trading.git
+$ cd Insider_Trading
 $ streamlit run report.py
 
 ```
@@ -119,7 +120,7 @@ $ streamlit run report.py
 
 ## Contributors
 
-This application is developed by Luis, Joe, Mario, AlGhalia, Naf
+This application is developed by [Luis](https://github.com/lumiroga), [Joe](https://github.com/EthernetWink), (Mario)[https://github.com/devops4cloud],(AlGhalia)[https://github.com/alghalia], (Naf)[https://github.com/nafeezurc]
 
 ---
 
