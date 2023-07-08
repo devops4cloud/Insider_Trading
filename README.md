@@ -73,12 +73,39 @@ The user of the application will have to download Python,Python package manager 
 
 <img src="./IMGS/LSTM%20model.png" width="800" height="400">
 
+### Dependencies:
+
+**Python 3.7**
+
+```bash
+pip install yfinance
+pip install tensorflow
+pip install xgboost
+pip install streamlit
+
+```
+
+* To the run the app, do the following:
+
+```bash
+
+$ streamlit run report.py
+
+```
+* A new browser will show.
+
+* Select the DataSet, select the Machine Learning algorithm and select the amount of samples.
+
+<img src=".//IMGS/GOOG_logistics-streamlit.png" width="1200" height="400">
+<img src=".//IMGS/TSLA_SVM-streamlit.png" width="1200" height="400">
 
 ### eXtreme Gradient Boosting (XGBoost)
 
 **Streamlit was used to present the machine learning models**
 
 <img src=".//IMGS/ML%20Streamlit.png" width="1200" height="400">
+
+
 
 ## Analysis Report
 

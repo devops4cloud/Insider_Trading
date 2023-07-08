@@ -9,12 +9,15 @@ from tensorflow import keras
 import xgboost as xgb
 from sklearn.metrics import classification_report
 
+# Define a class for handling insider dataframes
 class InsiderDataFrame:
 
+    # Initialize the class with file path and dataframe arguments
     def __init__(self, file_path, dataframe=None) -> None:
         if file_path:
             self.source = Path(file_path)
-        self.tickers = ["MSFT", "GOOG", "AMZN", "BIDU", "ADBE", "IBM", "MU", "NVDA", "PLTR", "AI", "TSLA"]
+        # Define a list of tickers to be used in the class
+        self.tickers = ["MSFT", "GOOG", "AMZN","TSLA"]
         self.fromdate = "2019-06-21"
         self.todate = "2023-06-30"
         self.df_tickers = None
@@ -91,21 +94,28 @@ class ReportApp:
 
         st.title(f'Insider Data for {stock}')
         df = self.load_data(stock)
+        df = df.dropna()
         st.dataframe(df)
 
         st.sidebar.title('Machine Learning Algorithm Selection')
         algorithm = st.sidebar.selectbox('Select an algorithm:', self.ml_algorithms)
         #st.write(f'Selected Algorithm: {algorithm}')
         model_loader = ModelProcessing()
-        model = model_loader.load_ml_model(algorithm,stock)
+        (model,scaler) = model_loader.load_ml_model(algorithm,stock)
         sample_number = st.sidebar.slider("Select a number of samples: ",1,len(df))
         tmp_df = df.sample(sample_number)
-        self._run_results(tmp_df,model)
+        self._run_results(tmp_df,model,scaler)
 
-    def _run_results(self,tmp_df,model):
+    def _run_results(self,tmp_df,model,scaler):
         y = tmp_df["Trend"]
         X = tmp_df.drop(columns=["Trend"])
-        predictions = model.predict(X)
+        if scaler is not None:
+            X_scaled = scaler.fit_transform(X)
+            predictions = model.predict(X_scaled)
+        else:
+            predictions = model.predict(X)
+        st.text("Sample selected")
+        st.dataframe(X)
         st.text(classification_report(y,predictions))
 
 
@@ -148,22 +158,16 @@ class ModelProcessing:
     
     def _get_scaler_model(self,ml_model,stock):
         if ml_model == "Logistics Regression":
-            return (f"{stock}_logistics_model.scaler")
+            filename= (f"{stock}_logistics_model.scaler")
         elif ml_model == "SVM":
-            return (f"{stock}_SVM_model.scaler")
+            filename =  (f"{stock}_SVM_model.scaler")
         else:
             return None
-
-"""
-# load weights into new model
-loaded_model.load_weights("model.h5")
-print("Loaded model from disk")
- 
-# evaluate loaded model on test data
-loaded_model.compile(loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
-score = loaded_model.evaluate(X, Y, verbose=0)
-"""
-
+        
+        with open(f"./models/{filename}","rb") as file:
+            loaded_model = pckl.load(file)
+        
+        return loaded_model
 
 
 
