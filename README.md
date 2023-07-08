@@ -25,11 +25,6 @@ Sources
 * FinViz
 * Yahoo Finance
 * Sec.gov
-## Data Cleansing
-* Remove $,",", % ,#errors
-* Changing the data types to datetime, float, integer
-* Drop unnecessary columns and null vaules
-* Applying Standard and other encoders
 
 ## Technologies
 Multiple technologies and statistical models are used to build the insider Application
