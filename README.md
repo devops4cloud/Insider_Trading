@@ -47,7 +47,7 @@ The user of the application will have to download Python,Python package manager 
 ## Support Vector Machine (SVM)
 
 
-
+<img src="./IMGS/SVM%20model.png">
 
 ## Long short-term memory (LSTM)
 
