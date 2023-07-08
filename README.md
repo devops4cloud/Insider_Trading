@@ -1,5 +1,6 @@
 # Insider_Trading
 Team project for insider trading
+<img src="./IMGS/insider.jpg">
 
 ---
 The Insider application checks the effect of insider trades on the top 10 AI companies closing price after 1 week of the filing date and compares the trend by using machine learning models.
