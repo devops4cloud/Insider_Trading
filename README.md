@@ -1,6 +1,5 @@
-# Insider_Trading
-Team project for insider trading
-<img src="./IMGS/insider.jpg">
+# Insider Trading Analysis -  Team 2 
+<img src="./IMGS/insider.jpg" width="1200" height="300">
 
 ---
 The Insider application checks the effect of insider trades on the top 10 AI companies closing price after 1 week of the filing date and compares the trend by using machine learning models.
@@ -9,16 +8,16 @@ It downloads 3 years of market daily closing from Yahoo Finance and the insider 
 
 **Insider Trades and the value for the last 3 years for MSFT**
 
-<img src="./IMGS/msft_insider_trades.png">
+<img src="./IMGS/msft_insider_trades.png" width="600" height="200">
 
 
 **Insider Trades during the last 3 years for MSFT and stock closing price**
 
-<img src="./IMGS/MSFT%20insider%20trades%20by%20price.png">
+<img src="./IMGS/MSFT%20insider%20trades%20by%20price.png" width="600" height="200">
 
 **Insider Trading - Price Impact After 1 week  - MSFT**
 
-<img src="./IMGS/MSFT%20insider%20trading%20.png">
+<img src="./IMGS/MSFT%20insider%20trading%20.png" width="600" height="200">
 
 
 ## Data inputs and cleaning 
@@ -26,11 +25,6 @@ Sources
 * FinViz
 * Yahoo Finance
 * Sec.gov
-## Data Cleansing
-* Remove $,",", % ,#errors
-* Changing the data types to datetime, float, integer
-* Drop unnecessary columns and null vaules
-* Applying Standard and other encoders
 
 ## Technologies
 Multiple technologies and statistical models are used to build the insider Application
@@ -44,7 +38,7 @@ Multiple technologies and statistical models are used to build the insider Appli
 - Matplotlib
 - Github
 
-  ## Installation Guide
+## Installation Guide
 
 The user of the application will have to download Python,Python package manager PIP and Git.
 
@@ -65,19 +59,18 @@ The user of the application will have to download Python,Python package manager 
 
 ## Machine Learning Models Outputs
 ### Logistic Regression
-<img src="./IMGS/LR%20model%20over%20sampling%20.png">
-
+<img src="./IMGS/LR%20model%20over%20sampling%20.png" width="600" height="400">
 
 
 ### Support Vector Machine (SVM)
 
 
-<img src="./IMGS/SVM%20model.png">
+<img src="./IMGS/SVM%20model.png" width="600" height="400">
 
 ### Long short-term memory (LSTM)
 
 
-<img src="./IMGS/LSTM%20model.png">
+<img src="./IMGS/LSTM%20model.png" width="600" height="400">
 
 
 ### eXtreme Gradient Boosting (XGBoost)
