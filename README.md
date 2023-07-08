@@ -59,18 +59,18 @@ The user of the application will have to download Python,Python package manager 
 
 ## Machine Learning Models Outputs
 ### Logistic Regression
-<img src="./IMGS/LR%20model%20over%20sampling%20.png" width="600" height="200">
+<img src="./IMGS/LR%20model%20over%20sampling%20.png" width="600" height="400">
 
 
 ### Support Vector Machine (SVM)
 
 
-<img src="./IMGS/SVM%20model.png" width="600" height="200">
+<img src="./IMGS/SVM%20model.png" width="600" height="400">
 
 ### Long short-term memory (LSTM)
 
 
-<img src="./IMGS/LSTM%20model.png" width="600" height="200">
+<img src="./IMGS/LSTM%20model.png" width="600" height="400">
 
 
 ### eXtreme Gradient Boosting (XGBoost)
