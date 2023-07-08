@@ -120,7 +120,7 @@ $ streamlit run report.py
 
 ## Contributors
 
-This application is developed by [Luis](https://github.com/lumiroga), [Joe](https://github.com/EthernetWink), (Mario)[https://github.com/devops4cloud], (AlGhalia)[https://github.com/alghalia], (Naf)[https://github.com/nafeezurc]
+This application is developed by [Luis](https://github.com/lumiroga), [Joe](https://github.com/EthernetWink), [Mario](https://github.com/devops4cloud), [AlGhalia](https://github.com/alghalia), [Naf](https://github.com/nafeezurc)
 
 ---
 
