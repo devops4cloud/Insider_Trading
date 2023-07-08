@@ -54,6 +54,14 @@ The user of the application will have to download Python,Python package manager 
 
 ## Machine Learning Models Used
 
+   - Logistic Regression
+  
+   - Support Vector Machine (SVM)
+  
+   - Long short-term memory (LSTM)
+  
+   - eXtreme Gradient Boosting (XGBoost)
+
 ## Logistic Regression
 <img src="./IMGS/LR%20model%20over%20sampling%20.png">
 
