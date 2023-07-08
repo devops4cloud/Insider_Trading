@@ -52,6 +52,9 @@ The user of the application will have to download Python,Python package manager 
 ## Long short-term memory (LSTM)
 
 
+<img src="./IMGS/LSTM%20model.png">
+
+
 ## eXtreme Gradient Boosting (XGBoost)
 
 
