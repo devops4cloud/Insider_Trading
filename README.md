@@ -38,12 +38,15 @@ The user of the application will have to download Python,Python package manager 
    - [How to install Git ](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
 
 ## Machine Learning Models Used
-<img src="./IMGS/LR model.jpg">
 
 ## Logistic Regression
+<img src="./IMGS/LR%20model%20over%20sampling%20.png">
+
 
 
 ## Support Vector Machine (SVM)
+
+
 
 
 ## Long short-term memory (LSTM)
