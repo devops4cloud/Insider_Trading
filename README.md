@@ -1,5 +1,5 @@
 # Insider Trading Analysis -  Team 2 
-<img src="./IMGS/insider.jpg">
+<img src="./IMGS/insider.jpg" width="1200" height="400">
 
 ---
 The Insider application checks the effect of insider trades on the top 10 AI companies closing price after 1 week of the filing date and compares the trend by using machine learning models.
@@ -8,16 +8,16 @@ It downloads 3 years of market daily closing from Yahoo Finance and the insider 
 
 **Insider Trades and the value for the last 3 years for MSFT**
 
-<img src="./IMGS/msft_insider_trades.png">
+<img src="./IMGS/msft_insider_trades.png" width="600" height="200">
 
 
 **Insider Trades during the last 3 years for MSFT and stock closing price**
 
-<img src="./IMGS/MSFT%20insider%20trades%20by%20price.png">
+<img src="./IMGS/MSFT%20insider%20trades%20by%20price.png" width="600" height="200">
 
 **Insider Trading - Price Impact After 1 week  - MSFT**
 
-<img src="./IMGS/MSFT%20insider%20trading%20.png">
+<img src="./IMGS/MSFT%20insider%20trading%20.png" width="600" height="200">
 
 
 ## Data inputs and cleaning 
