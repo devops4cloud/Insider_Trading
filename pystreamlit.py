@@ -125,7 +125,13 @@ class ReportApp:
         #st.write(f'Selected Algorithm: {algorithm}')
         model_loader = ModelProcessing()
         (model,scaler) = model_loader.load_ml_model(algorithm,stock)
-        sample_number = st.sidebar.slider("Select a number of samples: ",1,len(df))
+        if hasattr(model, 'layers'):
+            input_shape = model.layers[0].input_shape
+            #fix for only selecting valid samples for LSTM, list only with divisible 
+            # samples by the number of input_shape combined dimensions
+            sample_number = st.sidebar.selectbox('Select a number of samples:', [ num for num in range(1,len(df)) if num % (input_shape[1] * input_shape[2])==0 ])
+        else:
+            sample_number = st.sidebar.slider("Select a number of samples: ",1,len(df))
         tmp_df = df.sample(sample_number)
         self._run_results(tmp_df,model,scaler)
 
@@ -138,17 +144,18 @@ class ReportApp:
         else:
             if hasattr(model, 'layers') and model.layers is not None and model.layers[0].input_shape is not None:
                 input_shape = model.layers[0].input_shape
-                print(input_shape)
-                np.resize(X, (input_shape[1],input_shape[2]))
-                print(X.shape)
-                predictions = model.predict(X)
+                #print(input_shape)
+                #print(model.summary())
+                X_reshaped=np.reshape(np.array(X), (-1,input_shape[1],input_shape[2]))
+                #print(X_reshaped.shape)
+                predictions = model.predict(X_reshaped)
+                predictions = np.where(predictions >= 0.5, 1, 0)
+                y = np.resize(y,(X_reshaped.shape[0]))
             else:
                 predictions = model.predict(X)
         st.text("Sample selected")
         st.dataframe(X)
         st.text(classification_report(y,predictions))
-
-
 
 class ModelProcessing:
 
