@@ -73,6 +73,12 @@ The user of the application will have to download Python,Python package manager 
 
 <img src="./IMGS/LSTM%20model.png" width="800" height="400">
 
+### Extreme Gradient Boosting (XGBoost)
+
+<img src="./IMGS/XGboost.png" width="800" height="400">
+
+
+
 ### Dependencies:
 
 **Python 3.7**
