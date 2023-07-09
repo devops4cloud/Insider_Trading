@@ -136,7 +136,14 @@ class ReportApp:
             X_scaled = scaler.fit_transform(X)
             predictions = model.predict(X_scaled)
         else:
-            predictions = model.predict(X)
+            if hasattr(model, 'layers') and model.layers is not None and model.layers[0].input_shape is not None:
+                input_shape = model.layers[0].input_shape
+                print(input_shape)
+                np.resize(X, (input_shape[1],input_shape[2]))
+                print(X.shape)
+                predictions = model.predict(X)
+            else:
+                predictions = model.predict(X)
         st.text("Sample selected")
         st.dataframe(X)
         st.text(classification_report(y,predictions))
